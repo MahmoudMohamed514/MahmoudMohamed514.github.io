@@ -1,0 +1,60 @@
+/* SYNKRO detail pages: service briefs, app briefs and the app catalogue. */
+.back-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 6px;font-weight:500;text-decoration:none}
+.back-link:hover{color:var(--saffron-text)}
+.d-hero{padding-block:clamp(36px,5vw,72px) clamp(56px,7vw,104px)}
+.d-hero-grid{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,48px)}
+.d-hero-copy{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px 48px;align-items:end}
+.d-hero-copy h1{grid-column:1/-1;font-size:clamp(2.25rem,1.2rem + 3.4vw,4.25rem);line-height:1.2}
+html[lang="en"] .d-hero-copy h1{line-height:1.05;letter-spacing:-.03em}
+.d-hero-copy .lead{grid-column:1}
+.d-actions{grid-column:2;justify-self:end}
+.d-hero-copy .lead{color:var(--slate)}
+.d-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
+.d-media{background:var(--paper);padding:10px}
+.d-media img{width:100%;aspect-ratio:21/9;object-fit:cover;object-position:top}
+.d-media figcaption{padding:12px 6px 2px;color:var(--slate);font-size:var(--fs-small)}
+.d-summary{padding-block:clamp(56px,7vw,96px)}
+.d-statement{max-width:40ch;font-size:clamp(1.375rem,1.05rem + 1.1vw,2rem);line-height:1.6;font-weight:500}
+html[lang="en"] .d-statement{line-height:1.35}
+.d-content{padding-block:var(--section)}
+.d-head{display:grid;gap:18px;margin-bottom:clamp(40px,5vw,72px)}
+.d-head .lead{color:var(--slate)}
+.d-panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,48px)}
+.d-panel{display:grid;gap:14px;align-content:start}
+.d-panel h3{font-size:var(--fs-lead);line-height:1.4}
+.d-panel > p{color:var(--slate)}
+.phase-bar{display:block;height:6px;background:var(--mist-tone);margin-bottom:14px;overflow:hidden}
+.phase-bar i{display:block;height:100%;background:var(--saffron);transform-origin:right;transition:transform 1s var(--ease-out)}
+[dir="ltr"] .phase-bar i{transform-origin:left}
+.js body:not(.is-ready) .phase-bar i{transform:scaleX(0)}
+.d-panel:nth-child(2) .phase-bar i{transition-delay:.15s}.d-panel:nth-child(3) .phase-bar i{transition-delay:.3s}
+.phase-out{display:grid;gap:8px;margin-top:6px}
+.phase-out li{display:grid;grid-template-columns:20px 1fr;gap:8px;align-items:start;font-weight:500}
+.phase-out .icon{width:18px;height:18px;margin-top:.35em;color:var(--saffron-text)}
+.d-apps{display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
+.is-app-index .d-apps{display:grid}
+.is-app-index .d-panels{display:none}
+.d-app{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:20px;align-items:start;padding:12px;text-decoration:none;transition:background-color .25s var(--ease-out)}
+.d-app:hover,.d-app:focus-visible{background:var(--paper)}
+.d-app-shot{display:block;background:var(--paper);padding:6px;overflow:hidden}
+.d-app-shot img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;transition:transform .9s var(--ease-out)}
+.d-app:hover .d-app-shot img{transform:scale(1.03)}
+.d-app-copy{display:grid;gap:10px;align-content:start}
+.d-app-top{display:flex;align-items:center;gap:12px}
+.d-app-top img{width:36px;height:36px}
+.d-app-name{font-size:var(--fs-lead);font-weight:700;line-height:1.35}
+.d-app-desc{color:var(--slate)}
+.d-app-more{justify-self:start}
+.d-related{margin-top:var(--section)}
+.d-views{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.d-view{display:grid;gap:10px;padding:8px;background:var(--paper);text-decoration:none;transition:transform .25s var(--ease-out)}
+.d-view:hover{transform:translateY(-3px)}
+.d-view img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.d-view-cap{padding:0 4px 4px;font-weight:500}
+.d-closing{background:var(--saffron);color:var(--ink);padding-block:clamp(64px,8vw,112px)}
+.d-closing-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px 48px;align-items:end}
+.d-closing-grid > div{display:grid;gap:14px;max-width:60ch}
+.d-closing :focus-visible{outline-color:var(--ink)}
+@media (max-width:1000px){.d-panels{grid-template-columns:1fr}.d-apps{grid-template-columns:1fr}}
+@media (max-width:900px){.d-hero-copy{grid-template-columns:1fr}.d-actions{grid-column:1;justify-self:start}.d-media img{aspect-ratio:16/10}.d-closing-grid{grid-template-columns:1fr}.d-closing-grid .btn{justify-self:start}}
+@media (max-width:700px){.nav-cta{display:none}.d-views{grid-template-columns:1fr 1fr}.d-view:last-child{grid-column:1/-1}.d-app{grid-template-columns:1fr;padding:0}.back-link span{display:none}}

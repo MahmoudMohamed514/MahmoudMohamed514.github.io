@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SYNKRO | تنفيذ Odoo ERP للشركات في السعودية</title>
+  <meta name="description" content="SYNKRO تنفّذ Odoo ERP وتخصّصه وتدعمه للشركات في السعودية: المبيعات والمخزون والمشتريات والمحاسبة والتصنيع في نظام واحد مترابط.">
+  <meta name="theme-color" content="#F3F5F9">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SYNKRO | تنفيذ Odoo ERP">
+  <meta property="og:description" content="نطبّق Odoo على طريقة عملك: تحليل، تهيئة، ترحيل بيانات، تدريب، ودعم بعد التشغيل.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/synkro-mark.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/synkro.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <script>
+    document.documentElement.classList.add('js');
+    // Safety net: if the page script fails, never leave content hidden.
+    setTimeout(function(){ if(!window.__synkroReady){ document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('in'); }); } }, 3500);
+    /* Lead delivery. Fill ONE or both before launch, then the form works:
+       leadsEmail: the inbox that receives inquiries (opens the visitor's mail app with a ready message)
+       whatsapp:   international number, digits only, e.g. "9665XXXXXXXX" (opens WhatsApp with the message)
+       For a CRM/Odoo lead instead, see ODOO-INTEGRATION.md. */
+    window.SYNKRO_CONFIG = window.SYNKRO_CONFIG || { leadsEmail: "synkro.erp@outlook.com", whatsapp: "201555177123" };
+  </script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-fwd" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-2-2l.8-1-1-2z"/></symbol>
+</svg>
+  <a class="skip-link" href="#main" data-ar="انتقل إلى المحتوى" data-en="Skip to content">انتقل إلى المحتوى</a>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="container nav" data-ar-aria="التنقل الرئيسي" data-en-aria="Main navigation" aria-label="التنقل الرئيسي">
+      <a class="brand" href="#top" aria-label="SYNKRO"><img src="synkro-logo-primary.svg" width="559" height="215" alt="SYNKRO"></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a>
+        <a href="#flow" data-ar="كيف يعمل Odoo" data-en="How Odoo connects">كيف يعمل Odoo</a>
+        <a href="#industries" data-ar="القطاعات" data-en="Industries">القطاعات</a>
+        <a href="#process" data-ar="طريقة العمل" data-en="Process">طريقة العمل</a>
+        <a href="#faq" data-ar="الأسئلة" data-en="FAQ">الأسئلة</a>
+      </div>
+      <div class="nav-actions">
+        <button class="lang-btn" id="langToggle" type="button" lang="en">English</button>
+        <a class="btn btn-primary" href="#contact" data-ar="احجز جلسة اكتشاف" data-en="Book a discovery session">احجز جلسة اكتشاف</a>
+        <button class="menu-btn" id="menuToggle" type="button" aria-controls="navLinks" aria-expanded="false" data-ar-aria="فتح القائمة" data-en-aria="Open menu" aria-label="فتح القائمة"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- 1. Hero: what SYNKRO does, in large type, with the brand mark syncing -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy" data-reveal>
+          <h1 class="display" id="hero-title" data-ar="نطبّق Odoo على طريقة عملك." data-en="Odoo that fits how you work.">نطبّق Odoo على طريقة عملك.</h1>
+          <p class="lead measure" data-ar="SYNKRO تنفّذ Odoo ERP وتخصّصه وتدعمه للشركات في السعودية. نحلّل إجراءاتك، ونهيّئ التطبيقات التي تحتاجها، وندرّب فريقك، ونبقى معك بعد التشغيل." data-en="SYNKRO implements, tailors and supports Odoo ERP for companies in Saudi Arabia. We map your workflows, configure the apps you need, train your team and stay on after go-live.">SYNKRO تنفّذ Odoo ERP وتخصّصه وتدعمه للشركات في السعودية. نحلّل إجراءاتك، ونهيّئ التطبيقات التي تحتاجها، وندرّب فريقك، ونبقى معك بعد التشغيل.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact"><span data-ar="احجز جلسة اكتشاف" data-en="Book a discovery session">احجز جلسة اكتشاف</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+            <a class="text-link" href="#scope"><span data-ar="اختر تطبيقاتك" data-en="Pick your apps">اختر تطبيقاتك</span><svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></a>
+          </div>
+        </div>
+        <div class="hero-visual" data-hero-3d data-state="loading" aria-hidden="true">
+          <img class="hero-mark-fallback" src="assets/img/synkro-mark.svg" width="56" height="107" alt="">
+          <canvas></canvas>
+        </div>
+      </div>
+      <div class="container hero-apps">
+        <p data-ar="التطبيقات التي ننفّذها ونربطها:" data-en="The Odoo apps we implement and connect:">التطبيقات التي ننفّذها ونربطها:</p>
+        <ul data-reveal><li><a href="details.html?type=module&amp;item=sales"><img src="odoo-modules/sales.png" width="36" height="36" alt="" loading="eager"><span data-ar="المبيعات وCRM" data-en="Sales &amp; CRM">المبيعات وCRM</span></a></li><li><a href="details.html?type=module&amp;item=inventory"><img src="odoo-modules/inventory.png" width="36" height="36" alt="" loading="eager"><span data-ar="المخزون" data-en="Inventory">المخزون</span></a></li><li><a href="details.html?type=module&amp;item=purchase"><img src="odoo-modules/purchase.png" width="36" height="36" alt="" loading="eager"><span data-ar="المشتريات" data-en="Purchase">المشتريات</span></a></li><li><a href="details.html?type=module&amp;item=accounting"><img src="odoo-modules/accounting.png" width="36" height="36" alt="" loading="eager"><span data-ar="المحاسبة" data-en="Accounting">المحاسبة</span></a></li><li><a href="details.html?type=module&amp;item=manufacturing"><img src="odoo-modules/manufacturing.png" width="36" height="36" alt="" loading="eager"><span data-ar="التصنيع" data-en="Manufacturing">التصنيع</span></a></li><li><a href="details.html?type=module&amp;item=pos"><img src="odoo-modules/pos.png" width="36" height="36" alt="" loading="eager"><span data-ar="نقاط البيع" data-en="Point of Sale">نقاط البيع</span></a></li><li><a href="details.html?type=module&amp;item=project"><img src="odoo-modules/project.png" width="36" height="36" alt="" loading="eager"><span data-ar="المشروعات" data-en="Project">المشروعات</span></a></li><li><a href="details.html?type=module&amp;item=services"><img src="odoo-modules/services.png" width="36" height="36" alt="" loading="eager"><span data-ar="الخدمات والصيانة" data-en="Services &amp; Maintenance">الخدمات والصيانة</span></a></li><li><a href="details.html?type=module&amp;item=reporting"><img src="odoo-modules/reporting.png" width="36" height="36" alt="" loading="eager"><span data-ar="التقارير والتحليلات" data-en="Reporting &amp; Analytics">التقارير والتحليلات</span></a></li></ul>
+      </div>
+    </section>
+
+    <!-- 2. The idea: one order moving through Odoo, with Odoo's own document references -->
+    <section class="chain on-ink" id="flow" aria-labelledby="flow-title">
+      <div class="container">
+        <div class="chain-head" data-reveal>
+          <h2 class="heading" id="flow-title" data-ar="طلب واحد يمرّ على كل الأقسام." data-en="One order, through every team.">طلب واحد يمرّ على كل الأقسام.</h2>
+          <p class="lead measure" data-ar="قوة Odoo في الربط بين التطبيقات، لا في كل تطبيق وحده. تابع عرض سعر واحد وهو يتحوّل إلى تسليم وشراء وفاتورة، دون إدخال البيانات نفسها مرتين." data-en="Odoo's strength is the link between apps, not any single app. Follow one quotation as it becomes a delivery, a purchase and an invoice, without entering the same data twice.">قوة Odoo في الربط بين التطبيقات، لا في كل تطبيق وحده. تابع عرض سعر واحد وهو يتحوّل إلى تسليم وشراء وفاتورة، دون إدخال البيانات نفسها مرتين.</p>
+        </div>
+        <div class="chain-body">
+          <ol class="chain-steps">
+          <li class="chain-step" data-step="0">
+            <div class="chain-ref"><img src="odoo-modules/sales.png" width="40" height="40" alt=""><bdi dir="ltr">S00042</bdi></div>
+            <h3 data-ar="عرض السعر يصبح أمر بيع" data-en="The quotation becomes a sales order">عرض السعر يصبح أمر بيع</h3>
+            <p data-ar="يؤكّد العميل العرض، فيُنشئ Odoo أمر البيع ويجهّز أمر التسليم تلقائيًا دون إعادة إدخال." data-en="The customer confirms, and Odoo creates the sales order and prepares the delivery automatically, with nothing typed twice.">يؤكّد العميل العرض، فيُنشئ Odoo أمر البيع ويجهّز أمر التسليم تلقائيًا دون إعادة إدخال.</p>
+            <figure class="chain-inline"><img src="odoo-views/sales.webp" width="1046" height="654" loading="lazy" decoding="async" alt="شاشة عرض سعر في Odoo Sales" data-ar-alt="شاشة عرض سعر في Odoo Sales" data-en-alt="Quotation screen in Odoo Sales"></figure>
+          </li>
+          <li class="chain-step" data-step="1">
+            <div class="chain-ref"><img src="odoo-modules/inventory.png" width="40" height="40" alt=""><bdi dir="ltr">WH/OUT/00017</bdi></div>
+            <h3 data-ar="المستودع يعرف ما يجهّزه" data-en="The warehouse knows what to pick">المستودع يعرف ما يجهّزه</h3>
+            <p data-ar="يرى فريق المستودع ما يجب تجهيزه ومن أي موقع، وينقص الرصيد لحظة تأكيد التسليم." data-en="The warehouse team sees what to pick and from which location, and stock drops the moment delivery is validated.">يرى فريق المستودع ما يجب تجهيزه ومن أي موقع، وينقص الرصيد لحظة تأكيد التسليم.</p>
+            <figure class="chain-inline"><img src="odoo-views/inventory.webp" width="1440" height="900" loading="lazy" decoding="async" alt="شاشة عمليات المخزون في Odoo Inventory" data-ar-alt="شاشة عمليات المخزون في Odoo Inventory" data-en-alt="Operations screen in Odoo Inventory"></figure>
+          </li>
+          <li class="chain-step" data-step="2">
+            <div class="chain-ref"><img src="odoo-modules/purchase.png" width="40" height="40" alt=""><bdi dir="ltr">P00023</bdi></div>
+            <h3 data-ar="النقص يتحوّل إلى أمر شراء" data-en="A shortfall becomes a purchase order">النقص يتحوّل إلى أمر شراء</h3>
+            <p data-ar="إذا انخفض الرصيد عن الحد المحدّد، تقترح قواعد إعادة التوريد أمر شراء من المورّد المناسب." data-en="When stock falls below its minimum, replenishment rules propose a purchase order from the right vendor.">إذا انخفض الرصيد عن الحد المحدّد، تقترح قواعد إعادة التوريد أمر شراء من المورّد المناسب.</p>
+            <figure class="chain-inline"><img src="odoo-views/purchase.webp" width="1440" height="900" loading="lazy" decoding="async" alt="شاشة أوامر الشراء في Odoo Purchase" data-ar-alt="شاشة أوامر الشراء في Odoo Purchase" data-en-alt="Purchase orders in Odoo Purchase"></figure>
+          </li>
+          <li class="chain-step" data-step="3">
+            <div class="chain-ref"><img src="odoo-modules/accounting.png" width="40" height="40" alt=""><bdi dir="ltr">INV/2026/00031</bdi></div>
+            <h3 data-ar="الفاتورة تخرج من الطلب نفسه" data-en="The invoice comes from the same order">الفاتورة تخرج من الطلب نفسه</h3>
+            <p data-ar="تُنشأ فاتورة العميل من الكميات المسلّمة، ثم تُسجَّل الدفعة وتُطابَق مع كشف البنك." data-en="The customer invoice is built from delivered quantities, then the payment is recorded and matched to the bank statement.">تُنشأ فاتورة العميل من الكميات المسلّمة، ثم تُسجَّل الدفعة وتُطابَق مع كشف البنك.</p>
+            <figure class="chain-inline"><img src="odoo-views/accounting.webp" width="1440" height="900" loading="lazy" decoding="async" alt="لوحة المحاسبة في Odoo Accounting" data-ar-alt="لوحة المحاسبة في Odoo Accounting" data-en-alt="Odoo Accounting dashboard"></figure>
+          </li>
+          </ol>
+          <div class="chain-viewer" aria-hidden="true">
+            <figure class="viewer-frame">
+              <div class="viewer-stack"><img src="odoo-views/sales.webp" width="1046" height="654" loading="lazy" decoding="async" alt="" data-view="0" class="is-on"><img src="odoo-views/inventory.webp" width="1440" height="900" loading="lazy" decoding="async" alt="" data-view="1"><img src="odoo-views/purchase.webp" width="1440" height="900" loading="lazy" decoding="async" alt="" data-view="2"><img src="odoo-views/accounting.webp" width="1440" height="900" loading="lazy" decoding="async" alt="" data-view="3"></div>
+              <figcaption class="viewer-cap"><span data-ar="المبيعات وCRM" data-en="Sales &amp; CRM" data-cap="0" class="is-on">المبيعات وCRM</span><span data-ar="المخزون" data-en="Inventory" data-cap="1">المخزون</span><span data-ar="المشتريات" data-en="Purchase" data-cap="2">المشتريات</span><span data-ar="المحاسبة" data-en="Accounting" data-cap="3">المحاسبة</span></figcaption>
+            </figure>
+          </div>
+        </div>
+        <p class="chain-note small" data-ar="أرقام المستندات توضيحية بصيغة مراجع Odoo، والصور من واجهات Odoo الرسمية." data-en="Document numbers are illustrative, in Odoo's reference format. Screens are from Odoo's official interface.">أرقام المستندات توضيحية بصيغة مراجع Odoo، والصور من واجهات Odoo الرسمية.</p>
+      </div>
+    </section>
+
+    <!-- 3. Services: an index, not a card grid -->
+    <section class="services" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 class="heading" id="services-title" data-ar="كل ما يحتاجه مشروع Odoo." data-en="Everything an Odoo project needs.">كل ما يحتاجه مشروع Odoo.</h2>
+          <p class="lead measure" data-ar="من تحليل العمليات إلى تدريب الفريق وما بعد الإطلاق، نبني نظامًا عمليًا يناسب احتياج شركتك اليوم ويتوسّع معها." data-en="From process discovery to team training and life after launch, we build a practical system for today's needs that grows with you.">من تحليل العمليات إلى تدريب الفريق وما بعد الإطلاق، نبني نظامًا عمليًا يناسب احتياج شركتك اليوم ويتوسّع معها.</p>
+        </div>
+        <div class="svc-list">
+          <article class="svc" data-reveal>
+            <img class="svc-icon" src="odoo-modules/sales.png" width="48" height="48" alt="" loading="lazy">
+            <h3 data-ar="تنفيذ Odoo ERP" data-en="Odoo ERP implementation">تنفيذ Odoo ERP</h3>
+            <p data-ar="تحليل المتطلبات، وتوثيق دورة العمل، وتهيئة التطبيقات، وترحيل البيانات، والاختبار والتدريب، ثم الإطلاق بخطة واضحة." data-en="Requirements discovery, workflow mapping, app configuration, data migration, testing and training, then a planned go-live.">تحليل المتطلبات، وتوثيق دورة العمل، وتهيئة التطبيقات، وترحيل البيانات، والاختبار والتدريب، ثم الإطلاق بخطة واضحة.</p>
+            <a class="text-link svc-link" href="details.html?type=service&amp;item=implementation"><span data-ar="تفاصيل الخدمة" data-en="Service details">تفاصيل الخدمة</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+          </article>
+          <article class="svc" data-reveal>
+            <img class="svc-icon" src="odoo-modules/project.png" width="48" height="48" alt="" loading="lazy">
+            <h3 data-ar="التخصيص والتطوير" data-en="Customization &amp; development">التخصيص والتطوير</h3>
+            <p data-ar="إضافات وتقارير وصلاحيات وسير عمل عند الحاجة الفعلية فقط، مع الحفاظ على قابلية الصيانة والتحديث." data-en="Modules, reports, access rules and workflows only where there is a real need, kept maintainable and upgradeable.">إضافات وتقارير وصلاحيات وسير عمل عند الحاجة الفعلية فقط، مع الحفاظ على قابلية الصيانة والتحديث.</p>
+            <a class="text-link svc-link" href="details.html?type=service&amp;item=customization"><span data-ar="تفاصيل الخدمة" data-en="Service details">تفاصيل الخدمة</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+          </article>
+          <article class="svc" data-reveal>
+            <img class="svc-icon" src="odoo-modules/accounting.png" width="48" height="48" alt="" loading="lazy">
+            <h3 data-ar="المحاسبة والعمليات المالية" data-en="Accounting &amp; finance">المحاسبة والعمليات المالية</h3>
+            <p data-ar="دليل الحسابات والضرائب والفواتير والمدفوعات والتسويات والتقارير المالية، بما يناسب إجراءات شركتك." data-en="Chart of accounts, taxes, invoicing, payments, reconciliation and financial reporting, set up around your procedures.">دليل الحسابات والضرائب والفواتير والمدفوعات والتسويات والتقارير المالية، بما يناسب إجراءات شركتك.</p>
+            <a class="text-link svc-link" href="details.html?type=service&amp;item=finance"><span data-ar="تفاصيل الخدمة" data-en="Service details">تفاصيل الخدمة</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+          </article>
+          <article class="svc" data-reveal>
+            <img class="svc-icon" src="odoo-modules/inventory.png" width="48" height="48" alt="" loading="lazy">
+            <h3 data-ar="المخزون وسلاسل الإمداد" data-en="Inventory &amp; supply chain">المخزون وسلاسل الإمداد</h3>
+            <p data-ar="المستودعات والمواقع ومسارات الحركة، والتتبّع بالأرقام التسلسلية والدفعات، وقواعد إعادة التوريد." data-en="Warehouses, locations and routes, serial and lot tracking, and replenishment rules.">المستودعات والمواقع ومسارات الحركة، والتتبّع بالأرقام التسلسلية والدفعات، وقواعد إعادة التوريد.</p>
+            <a class="text-link svc-link" href="details.html?type=service&amp;item=inventory"><span data-ar="تفاصيل الخدمة" data-en="Service details">تفاصيل الخدمة</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+          </article>
+          <article class="svc" data-reveal>
+            <img class="svc-icon" src="odoo-modules/reporting.png" width="48" height="48" alt="" loading="lazy">
+            <h3 data-ar="التقارير وتحليل البيانات" data-en="Reporting &amp; analytics">التقارير وتحليل البيانات</h3>
+            <p data-ar="لوحات مؤشرات للمبيعات والمخزون والربحية والأداء من تقارير Odoo، مع Power BI عند الحاجة." data-en="Dashboards for sales, stock, profitability and performance from Odoo reporting, with Power BI where it helps.">لوحات مؤشرات للمبيعات والمخزون والربحية والأداء من تقارير Odoo، مع Power BI عند الحاجة.</p>
+            <a class="text-link svc-link" href="details.html?type=service&amp;item=analytics"><span data-ar="تفاصيل الخدمة" data-en="Service details">تفاصيل الخدمة</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+          </article>
+          <article class="svc" data-reveal>
+            <img class="svc-icon" src="odoo-modules/services.png" width="48" height="48" alt="" loading="lazy">
+            <h3 data-ar="الدعم والتحسين المستمر" data-en="Support &amp; continuous improvement">الدعم والتحسين المستمر</h3>
+            <p data-ar="معالجة المشكلات، وتحسين الأداء، وتدريب المستخدمين، ومراجعة الإعدادات مع نمو العمل." data-en="Issue resolution, performance tuning, user training and configuration reviews as the business grows.">معالجة المشكلات، وتحسين الأداء، وتدريب المستخدمين، ومراجعة الإعدادات مع نمو العمل.</p>
+            <a class="text-link svc-link" href="details.html?type=service&amp;item=support"><span data-ar="تفاصيل الخدمة" data-en="Service details">تفاصيل الخدمة</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. The live thing: pick apps, see what connects, carry it into the inquiry -->
+    <section class="scope" id="scope" aria-labelledby="scope-title">
+      <div class="container scope-grid">
+        <div class="scope-pick">
+          <div class="section-head" data-reveal>
+            <h2 class="heading" id="scope-title" data-ar="اختر تطبيقات Odoo التي تحتاجها." data-en="Pick the Odoo apps you need.">اختر تطبيقات Odoo التي تحتاجها.</h2>
+            <p class="lead measure" data-ar="حدّد ما يهمّك الآن، وسنوضّح ما يترابط بينها وما نغطيه في جلسة الاكتشاف. يُضاف اختيارك إلى طلب الاستشارة تلقائيًا." data-en="Choose what matters now and we'll show what connects and what discovery will cover. Your choice is added to your inquiry automatically.">حدّد ما يهمّك الآن، وسنوضّح ما يترابط بينها وما نغطيه في جلسة الاكتشاف. يُضاف اختيارك إلى طلب الاستشارة تلقائيًا.</p>
+          </div>
+          <fieldset class="picks">
+            <legend class="visually-hidden" data-ar="تطبيقات Odoo" data-en="Odoo apps">تطبيقات Odoo</legend>
+              <label class="pick">
+                <input type="checkbox" name="apps" value="sales" form="leadForm">
+                <img src="odoo-modules/sales.png" width="40" height="40" alt="" loading="lazy">
+                <span class="pick-text"><span class="pick-name" data-ar="المبيعات وCRM" data-en="Sales &amp; CRM">المبيعات وCRM</span><span class="pick-desc" data-ar="عملاء، عروض أسعار، طلبات" data-en="Leads, quotes, orders">عملاء، عروض أسعار، طلبات</span></span>
+                <span class="pick-box" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              </label>
+              <label class="pick">
+                <input type="checkbox" name="apps" value="inventory" form="leadForm">
+                <img src="odoo-modules/inventory.png" width="40" height="40" alt="" loading="lazy">
+                <span class="pick-text"><span class="pick-name" data-ar="المخزون" data-en="Inventory">المخزون</span><span class="pick-desc" data-ar="مستودعات، مواقع، تتبّع" data-en="Warehouses, locations, tracking">مستودعات، مواقع، تتبّع</span></span>
+                <span class="pick-box" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              </label>
+              <label class="pick">
+                <input type="checkbox" name="apps" value="purchase" form="leadForm">
+                <img src="odoo-modules/purchase.png" width="40" height="40" alt="" loading="lazy">
+                <span class="pick-text"><span class="pick-name" data-ar="المشتريات" data-en="Purchase">المشتريات</span><span class="pick-desc" data-ar="موردون، أوامر شراء، توريد" data-en="Vendors, purchase orders, supply">موردون، أوامر شراء، توريد</span></span>
+                <span class="pick-box" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              </label>
+              <label class="pick">
+                <input type="checkbox" name="apps" value="accounting" form="leadForm">
+                <img src="odoo-modules/accounting.png" width="40" height="40" alt="" loading="lazy">
+                <span class="pick-text"><span class="pick-name" data-ar="المحاسبة" data-en="Accounting">المحاسبة</span><span class="pick-desc" data-ar="فواتير، مدفوعات، تسويات" data-en="Invoices, payments, reconciliation">فواتير، مدفوعات، تسويات</span></span>
+                <span class="pick-box" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              </label>
+              <label class="pick">
+                <input type="checkbox" name="apps" value="manufacturing" form="leadForm">
+                <img src="odoo-modules/manufacturing.png" width="40" height="40" alt="" loading="lazy">
+                <span class="pick-text"><span class="pick-name" data-ar="التصنيع" data-en="Manufacturing">التصنيع</span><span class="pick-desc" data-ar="قوائم مواد، أوامر إنتاج" data-en="Bills of materials, work orders">قوائم مواد، أوامر إنتاج</span></span>
+                <span class="pick-box" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              </label>
+              <label class="pick">
+                <input type="checkbox" name="apps" value="pos" form="leadForm">
+                <img src="odoo-modules/pos.png" width="40" height="40" alt="" loading="lazy">
+                <span class="pick-text"><span class="pick-name" data-ar="نقاط البيع" data-en="Point of Sale">نقاط البيع</span><span class="pick-desc" data-ar="فروع، كاشير، جلسات" data-en="Stores, tills, sessions">فروع، كاشير، جلسات</span></span>
+                <span class="pick-box" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              </label>
+              <label class="pick">
+                <input type="checkbox" name="apps" value="project" form="leadForm">
+                <img src="odoo-modules/project.png" width="40" height="40" alt="" loading="lazy">
+                <span class="pick-text"><span class="pick-name" data-ar="المشروعات" data-en="Project">المشروعات</span><span class="pick-desc" data-ar="مهام، مراحل، ساعات عمل" data-en="Tasks, stages, timesheets">مهام، مراحل، ساعات عمل</span></span>
+                <span class="pick-box" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              </label>
+              <label class="pick">
+                <input type="checkbox" name="apps" value="services" form="leadForm">
+                <img src="odoo-modules/services.png" width="40" height="40" alt="" loading="lazy">
+                <span class="pick-text"><span class="pick-name" data-ar="الخدمات والصيانة" data-en="Services &amp; Maintenance">الخدمات والصيانة</span><span class="pick-desc" data-ar="طلبات صيانة، زيارات" data-en="Maintenance requests, visits">طلبات صيانة، زيارات</span></span>
+                <span class="pick-box" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              </label>
+              <label class="pick">
+                <input type="checkbox" name="apps" value="reporting" form="leadForm">
+                <img src="odoo-modules/reporting.png" width="40" height="40" alt="" loading="lazy">
+                <span class="pick-text"><span class="pick-name" data-ar="التقارير والتحليلات" data-en="Reporting &amp; Analytics">التقارير والتحليلات</span><span class="pick-desc" data-ar="مؤشرات ولوحات متابعة" data-en="Measures and dashboards">مؤشرات ولوحات متابعة</span></span>
+                <span class="pick-box" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              </label>
+          </fieldset>
+        </div>
+        <aside class="scope-result" aria-labelledby="scope-result-title">
+          <div class="scope-graph" data-scope-graph aria-hidden="true"></div>
+          <h3 class="visually-hidden" id="scope-result-title" data-ar="نتيجة اختيارك" data-en="Your selection">نتيجة اختيارك</h3>
+          <div class="scope-live" aria-live="polite">
+            <div data-scope-empty>
+              <p class="scope-big" data-ar="لم تختر أي تطبيق بعد." data-en="No apps selected yet.">لم تختر أي تطبيق بعد.</p>
+              <p data-ar="ابدأ بالتطبيق الذي يسبّب أكبر ضغط على فريقك اليوم، وأضف ما يرتبط به." data-en="Start with the app behind your team's biggest pressure today, then add what connects to it.">ابدأ بالتطبيق الذي يسبّب أكبر ضغط على فريقك اليوم، وأضف ما يرتبط به.</p>
+            </div>
+            <div data-scope-filled hidden>
+              <p class="scope-big" data-scope-count></p>
+              <div class="scope-block">
+                <h4 data-ar="ما الذي يترابط" data-en="What connects">ما الذي يترابط</h4>
+                <ul class="scope-links" data-scope-links></ul>
+              </div>
+              <div class="scope-block">
+                <h4 data-ar="ما نغطيه في جلسة الاكتشاف" data-en="What discovery will cover">ما نغطيه في جلسة الاكتشاف</h4>
+                <ul class="scope-topics" data-scope-topics></ul>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-primary scope-cta" href="#contact" data-scope-cta><span data-ar="انتقل إلى طلب الاستشارة" data-en="Continue to your inquiry">انتقل إلى طلب الاستشارة</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+          <a class="text-link scope-more" href="details.html?type=apps"><span data-ar="تفاصيل كل تطبيق" data-en="Details for every app">تفاصيل كل تطبيق</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 5. Industries: real Odoo screens per sector, zig-zag -->
+    <section class="industries" id="industries" aria-labelledby="industries-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 class="heading" id="industries-title" data-ar="Odoo حسب طبيعة نشاطك." data-en="Odoo shaped to your sector.">Odoo حسب طبيعة نشاطك.</h2>
+          <p class="lead measure" data-ar="النظام المناسب هو الذي يفهم واقع عملك. هذه أكثر الحالات التي نهيّئ Odoo لها، والتطبيقات التي تبدأ بها عادةً." data-en="The right system understands how you actually work. These are the setups we configure most, and the apps each one usually starts with.">النظام المناسب هو الذي يفهم واقع عملك. هذه أكثر الحالات التي نهيّئ Odoo لها، والتطبيقات التي تبدأ بها عادةً.</p>
+        </div>
+        <div class="ind-list">
+          <article class="ind" data-reveal>
+            <figure class="ind-media"><img src="odoo-views/purchase.webp" width="1440" height="900" loading="lazy" decoding="async" alt="واجهة أوامر الشراء في Odoo" data-ar-alt="واجهة أوامر الشراء في Odoo" data-en-alt="Odoo Purchase orders screen"></figure>
+            <div class="ind-copy">
+              <h3 data-ar="التوزيع والتجارة" data-en="Distribution &amp; trading">التوزيع والتجارة</h3>
+              <p data-ar="من عروض الأسعار والطلبات إلى المشتريات والمخزون والفوترة: دورة بيع مترابطة تناسب تعدّد الأصناف والعملاء." data-en="From quotations and orders to purchasing, stock and invoicing: one connected order-to-cash flow for large catalogs.">من عروض الأسعار والطلبات إلى المشتريات والمخزون والفوترة: دورة بيع مترابطة تناسب تعدّد الأصناف والعملاء.</p>
+              <ul class="ind-apps" data-ar-aria="التطبيقات الأساسية" data-en-aria="Core apps" aria-label="التطبيقات الأساسية"><li><img src="odoo-modules/sales.png" width="28" height="28" alt=""><span data-ar="المبيعات وCRM" data-en="Sales &amp; CRM">المبيعات وCRM</span></li><li><img src="odoo-modules/purchase.png" width="28" height="28" alt=""><span data-ar="المشتريات" data-en="Purchase">المشتريات</span></li><li><img src="odoo-modules/inventory.png" width="28" height="28" alt=""><span data-ar="المخزون" data-en="Inventory">المخزون</span></li><li><img src="odoo-modules/accounting.png" width="28" height="28" alt=""><span data-ar="المحاسبة" data-en="Accounting">المحاسبة</span></li></ul>
+              <a class="text-link" href="#scope" data-preset="sales,purchase,inventory,accounting"><span data-ar="ابدأ بهذه التطبيقات" data-en="Start with these apps">ابدأ بهذه التطبيقات</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+            </div>
+          </article>
+          <article class="ind" data-reveal>
+            <figure class="ind-media"><img src="odoo-views/pos.webp" width="1440" height="900" loading="lazy" decoding="async" alt="واجهة نقطة البيع في Odoo" data-ar-alt="واجهة نقطة البيع في Odoo" data-en-alt="Odoo Point of Sale screen"></figure>
+            <div class="ind-copy">
+              <h3 data-ar="التجزئة ونقاط البيع" data-en="Retail &amp; point of sale">التجزئة ونقاط البيع</h3>
+              <p data-ar="ربط مبيعات الفروع اليومية بالمخزون والتوريد والتقارير، مع رؤية أوضح للأصناف وحركة الطلب في كل فرع." data-en="Connect daily store sales with stock, replenishment and reporting, with clearer visibility per branch and product.">ربط مبيعات الفروع اليومية بالمخزون والتوريد والتقارير، مع رؤية أوضح للأصناف وحركة الطلب في كل فرع.</p>
+              <ul class="ind-apps" data-ar-aria="التطبيقات الأساسية" data-en-aria="Core apps" aria-label="التطبيقات الأساسية"><li><img src="odoo-modules/pos.png" width="28" height="28" alt=""><span data-ar="نقاط البيع" data-en="Point of Sale">نقاط البيع</span></li><li><img src="odoo-modules/inventory.png" width="28" height="28" alt=""><span data-ar="المخزون" data-en="Inventory">المخزون</span></li><li><img src="odoo-modules/purchase.png" width="28" height="28" alt=""><span data-ar="المشتريات" data-en="Purchase">المشتريات</span></li><li><img src="odoo-modules/accounting.png" width="28" height="28" alt=""><span data-ar="المحاسبة" data-en="Accounting">المحاسبة</span></li></ul>
+              <a class="text-link" href="#scope" data-preset="pos,inventory,purchase,accounting"><span data-ar="ابدأ بهذه التطبيقات" data-en="Start with these apps">ابدأ بهذه التطبيقات</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+            </div>
+          </article>
+          <article class="ind" data-reveal>
+            <figure class="ind-media"><img src="odoo-views/manufacturing.webp" width="1440" height="900" loading="lazy" decoding="async" alt="واجهة أوامر التصنيع في Odoo" data-ar-alt="واجهة أوامر التصنيع في Odoo" data-en-alt="Odoo Manufacturing orders screen"></figure>
+            <div class="ind-copy">
+              <h3 data-ar="التصنيع" data-en="Manufacturing">التصنيع</h3>
+              <p data-ar="تخطيط المواد وأوامر التصنيع والتتبّع والجودة وتكلفة المنتج في صورة تشغيلية واحدة." data-en="Material planning, manufacturing orders, traceability, quality and product costing in one operating picture.">تخطيط المواد وأوامر التصنيع والتتبّع والجودة وتكلفة المنتج في صورة تشغيلية واحدة.</p>
+              <ul class="ind-apps" data-ar-aria="التطبيقات الأساسية" data-en-aria="Core apps" aria-label="التطبيقات الأساسية"><li><img src="odoo-modules/manufacturing.png" width="28" height="28" alt=""><span data-ar="التصنيع" data-en="Manufacturing">التصنيع</span></li><li><img src="odoo-modules/inventory.png" width="28" height="28" alt=""><span data-ar="المخزون" data-en="Inventory">المخزون</span></li><li><img src="odoo-modules/purchase.png" width="28" height="28" alt=""><span data-ar="المشتريات" data-en="Purchase">المشتريات</span></li><li><img src="odoo-modules/accounting.png" width="28" height="28" alt=""><span data-ar="المحاسبة" data-en="Accounting">المحاسبة</span></li></ul>
+              <a class="text-link" href="#scope" data-preset="manufacturing,inventory,purchase,accounting"><span data-ar="ابدأ بهذه التطبيقات" data-en="Start with these apps">ابدأ بهذه التطبيقات</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+            </div>
+          </article>
+          <article class="ind" data-reveal>
+            <figure class="ind-media"><img src="odoo-views/project.webp" width="1440" height="900" loading="lazy" decoding="async" alt="واجهة إدارة المشروعات في Odoo" data-ar-alt="واجهة إدارة المشروعات في Odoo" data-en-alt="Odoo Project screen"></figure>
+            <div class="ind-copy">
+              <h3 data-ar="الخدمات والمشروعات" data-en="Services &amp; projects">الخدمات والمشروعات</h3>
+              <p data-ar="العملاء والمهام وساعات العمل والفوترة والمراحل في مسار واضح من الاتفاق إلى التحصيل." data-en="Customers, tasks, timesheets, billing and stages in one path from agreement to collection.">العملاء والمهام وساعات العمل والفوترة والمراحل في مسار واضح من الاتفاق إلى التحصيل.</p>
+              <ul class="ind-apps" data-ar-aria="التطبيقات الأساسية" data-en-aria="Core apps" aria-label="التطبيقات الأساسية"><li><img src="odoo-modules/project.png" width="28" height="28" alt=""><span data-ar="المشروعات" data-en="Project">المشروعات</span></li><li><img src="odoo-modules/sales.png" width="28" height="28" alt=""><span data-ar="المبيعات وCRM" data-en="Sales &amp; CRM">المبيعات وCRM</span></li><li><img src="odoo-modules/accounting.png" width="28" height="28" alt=""><span data-ar="المحاسبة" data-en="Accounting">المحاسبة</span></li><li><img src="odoo-modules/services.png" width="28" height="28" alt=""><span data-ar="الخدمات والصيانة" data-en="Services &amp; Maintenance">الخدمات والصيانة</span></li></ul>
+              <a class="text-link" href="#scope" data-preset="project,sales,accounting,services"><span data-ar="ابدأ بهذه التطبيقات" data-en="Start with these apps">ابدأ بهذه التطبيقات</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Process: a real sequence, so an ordered list -->
+    <section class="process" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 class="heading" id="process-title" data-ar="أربع مراحل، ومخرجات واضحة." data-en="Four phases, clear deliverables.">أربع مراحل، ومخرجات واضحة.</h2>
+          <p class="lead measure" data-ar="منهجية تنفيذ تقلّل المفاجآت، وتوضّح المسؤوليات، وتربط كل مرحلة بمخرجات تستلمها فعلًا." data-en="An implementation method that reduces surprises, makes ownership clear and ties every phase to something you receive.">منهجية تنفيذ تقلّل المفاجآت، وتوضّح المسؤوليات، وتربط كل مرحلة بمخرجات تستلمها فعلًا.</p>
+        </div>
+        <ol class="phases">
+          <li class="phase" data-reveal>
+            <span class="phase-bar" aria-hidden="true"><i></i></span>
+            <h3 data-ar="نفهم عملك" data-en="Discover">نفهم عملك</h3>
+            <p data-ar="نراجع العمليات الحالية والتحديات والأهداف، ونحدّد نطاق المشروع وأولوياته." data-en="We review current workflows, pain points and goals, then agree scope and priorities.">نراجع العمليات الحالية والتحديات والأهداف، ونحدّد نطاق المشروع وأولوياته.</p>
+            <ul class="phase-out"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-ar="خريطة الإجراءات الحالية" data-en="Map of current workflows">خريطة الإجراءات الحالية</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-ar="قائمة المتطلبات والفجوات" data-en="Requirements and gap list">قائمة المتطلبات والفجوات</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-ar="نطاق وأولويات متفق عليها" data-en="Agreed scope and priorities">نطاق وأولويات متفق عليها</span></li></ul>
+          </li>
+          <li class="phase" data-reveal>
+            <span class="phase-bar" aria-hidden="true"><i></i></span>
+            <h3 data-ar="نصمّم الحل" data-en="Design">نصمّم الحل</h3>
+            <p data-ar="نوثّق المتطلبات ونحدّد إعدادات Odoo والتخصيصات اللازمة قبل التنفيذ." data-en="We document requirements and define the Odoo configuration and any customization before building.">نوثّق المتطلبات ونحدّد إعدادات Odoo والتخصيصات اللازمة قبل التنفيذ.</p>
+            <ul class="phase-out"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-ar="تصميم الحل وإعدادات Odoo" data-en="Solution design and Odoo setup">تصميم الحل وإعدادات Odoo</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-ar="قائمة بالتخصيصات المبرّرة فقط" data-en="A list of justified customizations only">قائمة بالتخصيصات المبرّرة فقط</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-ar="خطة ترحيل البيانات" data-en="Data migration plan">خطة ترحيل البيانات</span></li></ul>
+          </li>
+          <li class="phase" data-reveal>
+            <span class="phase-bar" aria-hidden="true"><i></i></span>
+            <h3 data-ar="ننفّذ ونختبر" data-en="Implement &amp; test">ننفّذ ونختبر</h3>
+            <p data-ar="نجهّز النظام والبيانات، ونختبر سيناريوهات العمل الحقيقية مع فريقك قبل الإطلاق." data-en="We configure the system, prepare data and test real scenarios with your team before launch.">نجهّز النظام والبيانات، ونختبر سيناريوهات العمل الحقيقية مع فريقك قبل الإطلاق.</p>
+            <ul class="phase-out"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-ar="نظام مهيّأ ببياناتك" data-en="A system configured with your data">نظام مهيّأ ببياناتك</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-ar="سيناريوهات اختبار مع فريقك" data-en="Test scenarios run with your team">سيناريوهات اختبار مع فريقك</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-ar="تدريب حسب الأدوار" data-en="Role-based training">تدريب حسب الأدوار</span></li></ul>
+          </li>
+          <li class="phase" data-reveal>
+            <span class="phase-bar" aria-hidden="true"><i></i></span>
+            <h3 data-ar="نطلق ونطوّر" data-en="Launch &amp; improve">نطلق ونطوّر</h3>
+            <p data-ar="نرافق المستخدمين في بداية التشغيل، ثم نتابع الملاحظات والتحسينات." data-en="We support users through go-live, then work through feedback and improvements.">نرافق المستخدمين في بداية التشغيل، ثم نتابع الملاحظات والتحسينات.</p>
+            <ul class="phase-out"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-ar="خطة إطلاق ومتابعة للاستقرار" data-en="Go-live and stabilization plan">خطة إطلاق ومتابعة للاستقرار</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-ar="توثيق وتسليم" data-en="Documentation and handover">توثيق وتسليم</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-ar="قائمة تحسينات مرتّبة حسب القيمة" data-en="Improvement backlog ranked by value">قائمة تحسينات مرتّبة حسب القيمة</span></li></ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 7. Approach: one statement on a saffron field -->
+    <section class="approach" id="approach" aria-labelledby="approach-title">
+      <div class="container approach-grid" data-reveal>
+        <h2 class="visually-hidden" id="approach-title" data-ar="منهجنا" data-en="Our approach">منهجنا</h2>
+        <p class="statement" data-ar="نبدأ بما يقدّمه Odoo جاهزًا، ولا نطوّر إلا ما يستحق تكلفته وصيانته." data-en="We start with what Odoo already does, and build only what earns its cost and upkeep.">نبدأ بما يقدّمه Odoo جاهزًا، ولا نطوّر إلا ما يستحق تكلفته وصيانته.</p>
+        <div class="approach-side">
+          <p data-ar="نوازن بين أفضل ممارسات Odoo واحتياجات التشغيل الفعلية، ونبدأ بالأساسيات ذات القيمة بدل تعقيد النظام بتعديلات لا تحتاجها." data-en="We balance Odoo best practice with real operating needs, starting with high-value essentials instead of complexity you don't need.">نوازن بين أفضل ممارسات Odoo واحتياجات التشغيل الفعلية، ونبدأ بالأساسيات ذات القيمة بدل تعقيد النظام بتعديلات لا تحتاجها.</p>
+          <a class="text-link" href="details.html?type=service&amp;item=customization"><span data-ar="كيف نقرّر متى نطوّر" data-en="How we decide when to build">كيف نقرّر متى نطوّر</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. FAQ: every answer visible, no accordion -->
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <div class="faq-head" data-reveal>
+          <h2 class="heading" id="faq-title" data-ar="أسئلة قبل أن نبدأ." data-en="Questions before we start.">أسئلة قبل أن نبدأ.</h2>
+          <p class="lead" data-ar="كل شركة مختلفة. إن لم تجد سؤالك هنا، اكتبه في طلب الاستشارة." data-en="Every business is different. If your question isn't here, add it to your inquiry.">كل شركة مختلفة. إن لم تجد سؤالك هنا، اكتبه في طلب الاستشارة.</p>
+          <a class="btn btn-ink" href="#contact"><span data-ar="اكتب سؤالك" data-en="Ask your question">اكتب سؤالك</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></a>
+        </div>
+        <dl class="faq-list">
+            <div class="qa" data-reveal><dt data-ar="هل يمكن تنفيذ Odoo حسب طبيعة شركتنا؟" data-en="Can Odoo be tailored to our business?">هل يمكن تنفيذ Odoo حسب طبيعة شركتنا؟</dt><dd data-ar="نعم. نبدأ بتحليل العمليات، ثم نحدّد ما يمكن ضبطه بالإعدادات القياسية وما يحتاج إلى تخصيص فعلي، مع الحفاظ على سهولة الصيانة والتحديث." data-en="Yes. We map your workflows, use standard configuration wherever practical, and customize only where it adds real value and stays maintainable.">نعم. نبدأ بتحليل العمليات، ثم نحدّد ما يمكن ضبطه بالإعدادات القياسية وما يحتاج إلى تخصيص فعلي، مع الحفاظ على سهولة الصيانة والتحديث.</dd></div>
+            <div class="qa" data-reveal><dt data-ar="هل نحتاج إصدار Odoo Enterprise أم يكفي Community؟" data-en="Do we need Odoo Enterprise, or is Community enough?">هل نحتاج إصدار Odoo Enterprise أم يكفي Community؟</dt><dd data-ar="يعتمد ذلك على التطبيقات والميزات التي تحتاجها؛ فبعضها متاح في Enterprise فقط. نوضّح الفرق لنطاقك تحديدًا قبل أي قرار ترخيص." data-en="It depends on the apps and features you need; some are Enterprise-only. We show you the difference for your scope before any licensing decision.">يعتمد ذلك على التطبيقات والميزات التي تحتاجها؛ فبعضها متاح في Enterprise فقط. نوضّح الفرق لنطاقك تحديدًا قبل أي قرار ترخيص.</dd></div>
+            <div class="qa" data-reveal><dt data-ar="هل تساعدون في ترحيل البيانات من النظام القديم؟" data-en="Do you help migrate data from our current system?">هل تساعدون في ترحيل البيانات من النظام القديم؟</dt><dd data-ar="يمكن أن يشمل النطاق تجهيز البيانات ومراجعتها وتجربة الاستيراد والتحقق من النتائج، بحسب مصدر البيانات وجودتها وحجمها." data-en="Migration can include data preparation, validation, trial imports and reconciliation, depending on your source system, data quality and volume.">يمكن أن يشمل النطاق تجهيز البيانات ومراجعتها وتجربة الاستيراد والتحقق من النتائج، بحسب مصدر البيانات وجودتها وحجمها.</dd></div>
+            <div class="qa" data-reveal><dt data-ar="هل يمكن البدء بتطبيقات قليلة ثم التوسّع؟" data-en="Can we start with a few apps and grow later?">هل يمكن البدء بتطبيقات قليلة ثم التوسّع؟</dt><dd data-ar="نعم، وهذا ما ننصح به غالبًا: نبدأ بالتطبيقات التي تحلّ أكبر مشكلة الآن، ونصمّم البيانات بحيث تُضاف بقية التطبيقات لاحقًا دون إعادة بناء." data-en="Yes, and we often recommend it: start with the apps that fix the biggest problem now, and structure the data so the rest can be added later without rebuilding.">نعم، وهذا ما ننصح به غالبًا: نبدأ بالتطبيقات التي تحلّ أكبر مشكلة الآن، ونصمّم البيانات بحيث تُضاف بقية التطبيقات لاحقًا دون إعادة بناء.</dd></div>
+            <div class="qa" data-reveal><dt data-ar="هل تقدّمون تدريبًا للمستخدمين؟" data-en="Do you train our users?">هل تقدّمون تدريبًا للمستخدمين؟</dt><dd data-ar="نعم، جلسات عملية حسب أدوار المستخدمين وسيناريوهات العمل، مع توثيق الخطوات الأساسية." data-en="Yes. Hands-on, role-based sessions built on your real workflows, with written guides for the key steps.">نعم، جلسات عملية حسب أدوار المستخدمين وسيناريوهات العمل، مع توثيق الخطوات الأساسية.</dd></div>
+            <div class="qa" data-reveal><dt data-ar="هل تعملون مع الشركات في السعودية؟" data-en="Do you work with companies in Saudi Arabia?">هل تعملون مع الشركات في السعودية؟</dt><dd data-ar="نعم، الخدمة موجّهة للشركات في السعودية، ويمكن العمل عن بُعد أو حسب متطلبات المشروع. نراجع متطلبات الفوترة الإلكترونية لهيئة الزكاة والضريبة والجمارك (ZATCA) وإعدادات التوطين السعودي في Odoo لكل مشروع قبل اعتماد الحل." data-en="Yes. The service is built for companies in Saudi Arabia, delivered remotely or on site as the project needs. For every project we review ZATCA e-invoicing requirements and Odoo&#x27;s Saudi localization before the solution is agreed.">نعم، الخدمة موجّهة للشركات في السعودية، ويمكن العمل عن بُعد أو حسب متطلبات المشروع. نراجع متطلبات الفوترة الإلكترونية لهيئة الزكاة والضريبة والجمارك (ZATCA) وإعدادات التوطين السعودي في Odoo لكل مشروع قبل اعتماد الحل.</dd></div>
+            <div class="qa" data-reveal><dt data-ar="كم يستغرق تنفيذ Odoo؟" data-en="How long does an Odoo implementation take?">كم يستغرق تنفيذ Odoo؟</dt><dd data-ar="تعتمد المدة على عدد التطبيقات والفروع وحجم البيانات والتخصيصات. بعد جلسة الاكتشاف نقترح نطاقًا ومدة تقديرية واقعية." data-en="It depends on the number of apps, branches, data volume and customization. After discovery we propose a realistic scope and timeline.">تعتمد المدة على عدد التطبيقات والفروع وحجم البيانات والتخصيصات. بعد جلسة الاكتشاف نقترح نطاقًا ومدة تقديرية واقعية.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 9. Contact: honest form states -->
+    <section class="contact on-ink" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div class="contact-copy" data-reveal>
+          <h2 class="heading" id="contact-title" data-ar="لنرتّب الخطوة التالية." data-en="Let's plan your next step.">لنرتّب الخطوة التالية.</h2>
+          <p class="lead" data-ar="أخبرنا عن شركتك والتحدي الذي تريد حلّه، لنجهّز أول محادثة مفيدة فعلًا." data-en="Tell us about your company and the problem you want solved, so the first conversation is genuinely useful.">أخبرنا عن شركتك والتحدي الذي تريد حلّه، لنجهّز أول محادثة مفيدة فعلًا.</p>
+          <ol class="next-steps">
+            <li data-ar="نقرأ طلبك ونجهّز أسئلة خاصة بنشاطك." data-en="We read your inquiry and prepare questions specific to your business.">نقرأ طلبك ونجهّز أسئلة خاصة بنشاطك.</li>
+            <li data-ar="جلسة اكتشاف قصيرة لفهم إجراءاتك الحالية." data-en="A short discovery session to understand your current workflows.">جلسة اكتشاف قصيرة لفهم إجراءاتك الحالية.</li>
+            <li data-ar="نطاق مقترح وخطوات عملية بعدها." data-en="A proposed scope and practical next steps.">نطاق مقترح وخطوات عملية بعدها.</li>
+          </ol>
+          <div class="contact-direct">
+            <p data-ar="تفضّل التواصل المباشر؟" data-en="Prefer to reach us directly?">تفضّل التواصل المباشر؟</p>
+            <ul>
+              <li><a href="https://wa.me/201555177123" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span data-ar="واتساب" data-en="WhatsApp">واتساب</span><bdi dir="ltr">+20 155 517 7123</bdi></a></li>
+              <li><a href="tel:+201555177123"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span data-ar="اتصال" data-en="Call">اتصال</span><bdi dir="ltr">+20 155 517 7123</bdi></a></li>
+              <li><a href="mailto:synkro.erp@outlook.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span data-ar="البريد" data-en="Email">البريد</span><bdi dir="ltr">synkro.erp@outlook.com</bdi></a></li>
+            </ul>
+          </div>
+        </div>
+        <form class="lead-form" id="leadForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="name" data-ar="الاسم" data-en="Your name">الاسم</label>
+              <input id="name" name="name" required autocomplete="name" aria-describedby="name-error" placeholder="الاسم الكامل" data-ar-placeholder="الاسم الكامل" data-en-placeholder="Full name">
+              <p class="field-error" id="name-error" data-error-for="name" hidden></p>
+            </div>
+            <div class="field">
+              <label for="company" data-ar="الشركة" data-en="Company">الشركة</label>
+              <input id="company" name="company" autocomplete="organization" placeholder="اسم الشركة" data-ar-placeholder="اسم الشركة" data-en-placeholder="Company name">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="email" data-ar="البريد الإلكتروني للعمل" data-en="Work email">البريد الإلكتروني للعمل</label>
+              <input id="email" name="email" type="email" required autocomplete="email" inputmode="email" dir="ltr" aria-describedby="email-error" placeholder="name@company.com">
+              <p class="field-error" id="email-error" data-error-for="email" hidden></p>
+            </div>
+            <div class="field">
+              <label for="phone" data-ar="الجوال أو واتساب" data-en="Mobile or WhatsApp">الجوال أو واتساب</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" dir="ltr" placeholder="+966 5X XXX XXXX">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="service" data-ar="ما الذي تحتاجه؟" data-en="What do you need?">ما الذي تحتاجه؟</label>
+              <select id="service" name="service" required aria-describedby="service-error">
+                <option value="" data-ar="اختر الخدمة" data-en="Choose a service">اختر الخدمة</option>
+                <option value="implementation" data-ar="تنفيذ Odoo ERP" data-en="Odoo ERP implementation">تنفيذ Odoo ERP</option><option value="customization" data-ar="التخصيص والتطوير" data-en="Customization &amp; development">التخصيص والتطوير</option><option value="finance" data-ar="المحاسبة والعمليات المالية" data-en="Accounting &amp; finance">المحاسبة والعمليات المالية</option><option value="inventory" data-ar="المخزون وسلاسل الإمداد" data-en="Inventory &amp; supply chain">المخزون وسلاسل الإمداد</option><option value="analytics" data-ar="التقارير وتحليل البيانات" data-en="Reporting &amp; analytics">التقارير وتحليل البيانات</option><option value="support" data-ar="الدعم والتحسين المستمر" data-en="Support &amp; continuous improvement">الدعم والتحسين المستمر</option>
+                <option value="other" data-ar="أخرى" data-en="Other">أخرى</option>
+              </select>
+              <p class="field-error" id="service-error" data-error-for="service" hidden></p>
+            </div>
+            <div class="field">
+              <label for="contactMethod" data-ar="طريقة التواصل المفضّلة" data-en="Preferred contact method">طريقة التواصل المفضّلة</label>
+              <select id="contactMethod" name="contactMethod">
+                <option value="email" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</option>
+                <option value="whatsapp" data-ar="واتساب" data-en="WhatsApp">واتساب</option>
+                <option value="call" data-ar="مكالمة هاتفية" data-en="Phone call">مكالمة هاتفية</option>
+              </select>
+            </div>
+          </div>
+          <div class="field field-apps">
+            <span class="label" data-ar="التطبيقات المختارة" data-en="Selected apps">التطبيقات المختارة</span>
+            <p class="apps-summary" data-apps-summary><span data-ar="لم تختر تطبيقات بعد." data-en="No apps selected yet.">لم تختر تطبيقات بعد.</span> <a class="text-link" href="#scope" data-ar="اختر من القائمة" data-en="Choose from the list">اختر من القائمة</a></p>
+          </div>
+          <div class="field">
+            <label for="message" data-ar="نبذة عن احتياجك (اختياري)" data-en="Anything else we should know (optional)">نبذة عن احتياجك (اختياري)</label>
+            <textarea id="message" name="message" rows="4" placeholder="عدد المستخدمين، الفروع، النظام الحالي، أكبر تحدٍّ اليوم" data-ar-placeholder="عدد المستخدمين، الفروع، النظام الحالي، أكبر تحدٍّ اليوم" data-en-placeholder="Number of users, branches, current system, biggest challenge today"></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit"><span data-ar="أرسل طلب الاستشارة" data-en="Send inquiry">أرسل طلب الاستشارة</span><svg class="icon icon-fwd" aria-hidden="true"><use href="#i-fwd"/></svg></button>
+          </div>
+          <div class="form-status" id="formStatus" role="status" aria-live="polite" hidden>
+            <p data-status-text></p>
+            <button class="btn btn-ink form-copy" type="button" data-copy-inquiry hidden><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span data-ar="انسخ نص الطلب" data-en="Copy inquiry text">انسخ نص الطلب</span></button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer on-ink">
+    <div class="container">
+      <img class="footer-mark" src="assets/img/synkro-wordmark-reversed.svg" width="454" height="110" alt="SYNKRO" loading="lazy">
+      <div class="footer-row">
+        <nav class="footer-links" data-ar-aria="روابط التذييل" data-en-aria="Footer links" aria-label="روابط التذييل">
+          <a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a>
+          <a href="details.html?type=apps" data-ar="تطبيقات Odoo" data-en="Odoo apps">تطبيقات Odoo</a>
+          <a href="#process" data-ar="طريقة العمل" data-en="Process">طريقة العمل</a>
+          <a href="#faq" data-ar="الأسئلة" data-en="FAQ">الأسئلة</a>
+          <a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
+        </nav>
+        <ul class="footer-contact">
+          <li><a href="mailto:synkro.erp@outlook.com"><bdi dir="ltr">synkro.erp@outlook.com</bdi></a></li>
+          <li><a href="https://wa.me/201555177123" target="_blank" rel="noopener"><span data-ar="واتساب" data-en="WhatsApp">واتساب</span> <bdi dir="ltr">+20 155 517 7123</bdi></a></li>
+        </ul>
+        <p class="footer-legal small" data-ar="© 2026 SYNKRO. ‏Odoo علامة تجارية مسجّلة لشركة Odoo S.A.، والأيقونات وصور الواجهات من مصادر Odoo الرسمية." data-en="© 2026 SYNKRO. Odoo is a registered trademark of Odoo S.A. App icons and interface screens are from Odoo's official sources.">© 2026 SYNKRO. ‏Odoo علامة تجارية مسجّلة لشركة Odoo S.A.، والأيقونات وصور الواجهات من مصادر Odoo الرسمية.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/hero3d.js" defer></script>
+</body>
+</html>
